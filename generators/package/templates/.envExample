@@ -1,0 +1,3 @@
+# package specific env vars override and extend shared .env
+SVC_KMS_KEY_ID=xxxx
+

@@ -1,0 +1,18 @@
+# Performance test script
+# ---------------------------------------
+# - Refer to https://artillery.io/docs/
+# - Rename this file to 'artillery' and update contents to enable perf tests.
+# - Use 'yarn sls-perf' to run, and 'yarn sls-perf-report' to generate reports.
+#
+config:
+  target: 'https://api.mycluster.net'
+  phases:
+    - duration: 60
+      arrivalRate: 20
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - flow:
+    - get:
+        url: "/<%= name %>/"

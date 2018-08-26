@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "<%= name %>.fullname" . }}
+  {{ if .Values.ambassador.enabled -}}
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name:  {{ .Values.service.name }}_mapping
+      prefix: /{{ .Values.service.name }}/
+      service: {{ .Values.service.name }}-{{ .Release.Name }}.default.svc.cluster.local:8088
+      host_rewrite: {{ .Values.service.name }}-{{ .Release.Name }}.default.svc.cluster.local
+  {{- end }}
+  labels:
+    app: {{ template "<%= name %>.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.externalPort }}
+      targetPort: {{ .Values.service.internalPort }}
+      protocol: TCP
+      name: {{ .Values.service.name }}
+  selector:
+    app: {{ template "<%= name %>.name" . }}
+    release: {{ .Release.Name }}

@@ -1,0 +1,18 @@
+---
+# Declare variables to be passed into your templates.
+replicaCount: 1
+image:
+  repository: <%= dockerOrg %>/<%= name %>
+  tag: latest
+  pullPolicy: Always
+service:
+  name: <%= name %>
+  type: ClusterIP
+  externalPort: 8088
+  internalPort: 8088
+ambassador:
+  enabled: true # set to false if you do not want to expose your service outside of the cluster
+resources:
+  requests:
+    cpu: 5m
+    memory: 8Mi
