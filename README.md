@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/generator-micro-kube.svg)](https://badge.fury.io/js/generator-micro-kube)
 [![Build Status](https://travis-ci.org/zotoio/generator-micro-kube.svg?branch=master)](https://travis-ci.org/zotoio/generator-micro-kube)
 
-> Microservices scaffolding for Kubernetes and Ambassador API Gateway
+> Microservices scaffolding for Kubernetes and Ambassador API Gateway.
 
 ## Pre-requisites
 
