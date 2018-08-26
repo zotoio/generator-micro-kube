@@ -7,7 +7,7 @@
 
 ## Pre-requisites
 
-You should be familiar with Kubernetes, Helm and Docker in general
+You should be familiar with Kubernetes, Helm and Docker.
 
 - docker
 - kubectl
