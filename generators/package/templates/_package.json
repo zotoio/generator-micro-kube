@@ -12,7 +12,7 @@
         "prebuild": "yarn run clean",
         "predev": "yarn run clean",
         "start": "yarn build && node ./dist/index.js",
-        "test": "jest -c ../../jest.json --coverage --forceExit",
+        "test": "SVC_PORT=0 jest -c ../../jest.json --coverage --forceExit",
         "svc-deploy": "helm install --name <%= name %> -f ./values.yaml .",
         "svc-package": "yarn build && docker build . -t <%= dockerOrg %>/<%= name %>",
         "svc-docker": "yarn svc-package && docker run --init -p 8088:8088 <%= dockerOrg %>/<%= name %>",
