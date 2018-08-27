@@ -19,4 +19,7 @@
 .project
 .idea/
 *.tmproj
+node_modules/
+dist/
+src/
 
