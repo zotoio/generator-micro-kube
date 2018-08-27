@@ -18,7 +18,8 @@
         "svc-docker": "yarn svc-package && docker run --init -p 8088:8088 <%= dockerOrg %>/<%= name %>",
         "svc-publish": "docker push <%= dockerOrg %>/<%= name %>",
         "svc-upgrade": "helm upgrade <%= name %> -f ./values.yaml .",
-        "svc-logs": "POD_NAME=$(kubectl get pods --namespace default -l \"app=<%= name %>\" -o jsonpath=\"{.items[0].metadata.name}\") kubectl logs -f $POD_NAME",
+        "svc-remove": "helm delete --purge <%= name %>",
+        "svc-logs": "kubectl logs -f $(kubectl get pods --namespace default -l \"app=<%= name %>\" -o jsonpath=\"{.items[0].metadata.name}\")",
         "svc-perf": "rimraf ../../output/artillery/${npm_package_name} && mkdir -p ../../output/artillery/${npm_package_name} && node ../../node_modules/artillery/bin/artillery run -o ../../output/artillery/${npm_package_name}/artillery-report.json artillery.yml",
         "svc-perf-report": "node ../../node_modules/artillery/bin/artillery report ../../output/artillery/${npm_package_name}/artillery-report.json -o ../../output/artillery/${npm_package_name}/artillery-report.html"
     }

@@ -26,28 +26,28 @@ You will be prompted for:
 ## Execution
 
 ### Test offline
-Inside new package run this, then browse to url shown.
+Inside new package run this, then `curl localhost:8088`
 ```
-docker-compose up
+yarn svc-docker
 ```
 
-### Deploy
+### Deploy to kubernetes
 To deploy a given service package, go to the `packages/[function]` dir and run:
 
 ```
-yarn svc-publish  
-yarn helm-deploy
+yarn svc-publish
+yarn svc-deploy
 ```
 
 This script will assemble inherited env vars, lint, test and compile the servcies, and deploy it to Kubernetes.
 
-### remove lambda
+### Remove from Kubernetes
 Inside new package run this.
 ```
 yarn svc-remove
 ```
 
-### tail lambda logs
+### Kubernetes Service logs
 Inside new package run this.
 ```
 yarn svc-logs
