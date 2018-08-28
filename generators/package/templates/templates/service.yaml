@@ -11,14 +11,15 @@ metadata:
       kind:  Mapping
       name:  {{ .Values.service.name }}_mapping
       prefix: /{{ .Values.service.name }}/
-      service: {{ .Values.service.name }}-{{ .Release.Name }}.default.svc.cluster.local:8088
-      host_rewrite: {{ .Values.service.name }}-{{ .Release.Name }}.default.svc.cluster.local
+      service: {{ template "<%= name %>.fullname" . }}.default.svc.cluster.local:8088
+      host_rewrite: {{ template "<%= name %>.fullname" . }}.default.svc.cluster.local
   {{- end }}
   labels:
     app: {{ template "<%= name %>.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    generator: micro-kube
 spec:
   type: {{ .Values.service.type }}
   ports:
