@@ -13,6 +13,7 @@ You should be familiar with Kubernetes, Helm and Docker.
 - kubectl
 - helm
 - access to push to a docker registry such as dockerhub
+- ambassador installed in your cluster
 
 .. and a valid kubectl configuration for an active Kubernetes cluster with helm tiller installed. 
 
